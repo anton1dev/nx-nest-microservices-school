@@ -1,6 +1,5 @@
 import { IUser, UserRole } from '@school/interfaces';
-import { compare, genSalt, getSalt, hash } from 'bcryptjs';
-import { combineLatest } from 'rxjs';
+import { compare, genSalt, hash } from 'bcryptjs';
 
 export class UserEntity implements IUser {
   _id?: string;
@@ -11,6 +10,7 @@ export class UserEntity implements IUser {
 
   constructor(user: IUser) {
     this._id = user._id;
+    this.passwordHash = user.passwordHash;
     this.displayName = user.displayName;
     this.email = user.email;
     this.role = user.role;
